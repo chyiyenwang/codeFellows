@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment1</title>
+    <style>
+    body {
+      background: url('/Users/chyiwang/Desktop/calvinNhobbes.png');
+      background-repeat: no-repeat;
+    }
+    article {
+      text-align: center;
+    }
+    button {
+      text-align: center;
+      margin: 50% auto;
+      width: 200px;
+      height: 100px;
+      font-size: 40px;
+      border-radius: 20px;
+      outline: none;
+    }
+    </style>
+  </head>
+  <body>
+    <script>
+    var guess;
+    var answer;
+
+      function startGame() {
+        answer = Math.round(Math.random() * 100);
+        guess = prompt("You only have 7 guesses.  Guess the correct number between 0-100");
+
+        if (guess != answer) {
+          startCount();
+        }
+        else {
+          alert("You cheated!  You guessed on your first try!");
+        }
+      }
+
+      function startCount() {
+        for (var n = 1; n <= 7; n++) {
+          if (guess == answer) {
+            alert("Congrats you guessed correctly in " + n + " tries!");
+            break;
+          }
+          else if (n == 7) {
+            alert("You lose!  The number was " + answer);
+            break;
+          }
+          else if (guess == null) {
+            break;
+          }
+          else {
+            lowerHigher();
+            guess = prompt("Guess again! You have " + (7 - n) + " guess(es) remaining!");
+
+          }
+        }
+      }
+
+      function lowerHigher() {
+        if (guess < answer) {
+          alert("Guess higher!");
+        }
+        else {
+          alert("Guess lower!");
+        }
+      }
+
+    </script>
+    <article>
+       <button onclick="startGame()">Start</button>
+    </article>
+  </body>
+</html>
